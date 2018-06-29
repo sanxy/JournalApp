@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4dd0e1</color>
+    <color name="colorPrimaryDark">#00acc1</color>
+    <color name="colorAccent">#5e35b1</color>
+    <color name="colorText">#dddddd</color>
+    <color name="colorHint">#959595</color>
+    <color name="colorButtonTransparent">#be050505</color>
+
+    <color name="bg_login">#26ae90</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#428bca</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="teal">#009688</color>
+    <color name="homeBg">#ffffff</color>
+    <color name="dayCardBg">#fceaed</color>
+    <color name="viewCardBg">#ffffff</color>
+    <color name="priority0">#26ae90</color>
+    <color name="priority1">#ffff33</color>
+    <color name="priority2">#428bca</color>
+    <color name="priority3">#ff3300</color>
+    <color name="priority4">#ff0000</color>
+    <color name="priority5">#cc0000</color>
+    <color name="blackText">#000000</color>
+</resources>
