@@ -44,7 +44,7 @@ Currently the following functions are implemented:
 
 # Deployment
 Any android device
-# Authors
+# Author
 Yusuf Adefolahan
 # Acknowledgments
 * Google
