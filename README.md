@@ -1,7 +1,7 @@
 # Journal App
 Journal app is an open source application for android devices in respect to Google Africa Scholarship challenge course (#7DaysofCodeChallenge).
 This project was finished within seven days. The android application can be used to take notes, set alarm for important journals.
-Regitration, login and password reset is based on Firebase Authentication while the journals are saved using ROOM (a persistence library) . Data are stored on the device.
+Registration, login and password reset is based on Firebase Authentication while the journals are saved using ROOM (a persistence library) . Data are stored on the device.
 
 # Getting Started
 * Download and install the apk file on your android device running on android operating system 4.4 and above. 
@@ -44,7 +44,7 @@ Currently the following functions are implemented:
 
 # Deployment
 Any android device
-# Authors
+# Author
 Yusuf Adefolahan
 # Acknowledgments
 * Google
