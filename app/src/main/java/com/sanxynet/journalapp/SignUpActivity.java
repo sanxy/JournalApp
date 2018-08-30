@@ -1,26 +1,32 @@
 package com.sanxynet.journalapp;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
+import android.widget.RelativeLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextName, editTextEmail, editTextPassword, editTextPhone;
     private ProgressBar progressBar;
-
     private FirebaseAuth mAuth;
+    private Snackbar mSnackbar;
+    RelativeLayout layout;
+    private static final String TAG = SignUpActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextPhone = findViewById(R.id.edit_text_phone);
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
+        layout = findViewById(R.id.layout);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -46,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         if (mAuth.getCurrentUser() != null) {
             //handle the already login user
-
+            Log.d(TAG, "user already login");
         }
     }
 
@@ -102,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -114,22 +122,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             );
 
                             FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(SignUpActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+                                        showSnackbar(getString(R.string.registration_success) );
                                     } else {
                                         //display a failure message
-
+                                        Log.d(TAG, "failed to login");
                                     }
                                 }
                             });
 
                         } else {
-                            Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            showSnackbar(Objects.requireNonNull(task.getException()).getMessage() );
                         }
                     }
                 });
@@ -147,5 +155,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 registerUser();
                 break;
         }
+    }
+
+    private void showSnackbar(String text) {
+        mSnackbar = Snackbar.make(layout, text, Snackbar.LENGTH_LONG);
+        mSnackbar.setAction(R.string.action_close, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSnackbar.dismiss();
+            }
+        });
+        mSnackbar.show();
     }
 }

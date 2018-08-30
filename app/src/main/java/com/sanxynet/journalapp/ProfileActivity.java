@@ -2,15 +2,14 @@ package com.sanxynet.journalapp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,11 +25,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     FirebaseAuth auth;
     //get current user
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private Snackbar mSnackbar;
+    ConstraintLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        layout = findViewById(R.id.layout);
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -159,12 +161,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(ProfileActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                                showSnackbar(getString(R.string.profile_deleted) );
                                 startActivity(new Intent(ProfileActivity.this, SignUpActivity.class));
                                 finish();
                                 progressBar.setVisibility(View.GONE);
                             } else {
-                                Toast.makeText(ProfileActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
+                                showSnackbar(getString(R.string.failed_to_delete_account) );
                                 progressBar.setVisibility(View.GONE);
                             }
                         }
@@ -180,16 +182,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ProfileActivity.this, "Reset password email is sent!", Toast.LENGTH_SHORT).show();
+                                    showSnackbar(getString(R.string.reset_password_sent) );
                                     progressBar.setVisibility(View.GONE);
                                 } else {
-                                    Toast.makeText(ProfileActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    showSnackbar(getString(R.string.failed_to_send_reset_email) );
                                     progressBar.setVisibility(View.GONE);
                                 }
                             }
                         });
             } else {
-                oldEmail.setError("Enter email");
+                oldEmail.setError(getString(R.string.enter_email));
                 progressBar.setVisibility(View.GONE);
             }
         }
@@ -209,7 +211,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             progressBar.setVisibility(View.VISIBLE);
             if (user != null && !newPassword.getText().toString().trim().equals("")) {
                 if (newPassword.getText().toString().trim().length() < 6) {
-                    newPassword.setError("Password too short, enter minimum 6 characters");
+                    newPassword.setError(getString(R.string.password_is_too_short));
                     progressBar.setVisibility(View.GONE);
                 } else {
                     user.updatePassword(newPassword.getText().toString().trim())
@@ -217,18 +219,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ProfileActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
+                                        showSnackbar(getString(R.string.password_updated) );
                                         signOut();
                                         progressBar.setVisibility(View.GONE);
                                     } else {
-                                        Toast.makeText(ProfileActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
+                                        showSnackbar(getString(R.string.failed_to_updated_password) );
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
                 }
             } else if (newPassword.getText().toString().trim().equals("")) {
-                newPassword.setError("Enter password");
+                newPassword.setError(getString(R.string.enter_password));
                 progressBar.setVisibility(View.GONE);
             }
         }
@@ -241,17 +243,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ProfileActivity.this, "Email address is updated. Please sign in with new email id!", Toast.LENGTH_LONG).show();
+                                    showSnackbar(getString(R.string.email_updated) );
                                     signOut();
                                     progressBar.setVisibility(View.GONE);
                                 } else {
-                                    Toast.makeText(ProfileActivity.this, "Failed to update email!", Toast.LENGTH_LONG).show();
+                                    showSnackbar(getString(R.string.failed_to_update_email) );
                                     progressBar.setVisibility(View.GONE);
                                 }
                             }
                         });
             } else if (newEmail.getText().toString().trim().equals("")) {
-                newEmail.setError("Enter email");
+                newEmail.setError(getString(R.string.enter_email));
                 progressBar.setVisibility(View.GONE);
             }
         }
@@ -278,5 +280,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             remove.setVisibility(View.GONE);
         }
 
+    private void showSnackbar(String text) {
+        mSnackbar = Snackbar.make(layout, text, Snackbar.LENGTH_LONG);
+        mSnackbar.setAction(R.string.action_close, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSnackbar.dismiss();
+            }
+        });
+        mSnackbar.show();
+    }
     }
 

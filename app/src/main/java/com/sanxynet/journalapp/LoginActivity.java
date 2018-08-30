@@ -1,20 +1,24 @@
 package com.sanxynet.journalapp;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +26,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText editTextEmail, editTextPassword;
     Button buttonLogin, buttonReset;
     ProgressBar progressBar;
+    private Snackbar mSnackbar;
+    RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonLogin = findViewById(R.id.login_button);
         buttonReset = findViewById(R.id.reset_password_button);
         progressBar = findViewById(R.id.progressbar);
+        layout = findViewById(R.id.layout);
 
         findViewById(R.id.text_view_signup).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
@@ -73,6 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
@@ -82,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    showSnackbar(Objects.requireNonNull(task.getException()).getMessage() );
                 }
             }
         });
@@ -124,7 +132,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-
+    private void showSnackbar(String text) {
+        mSnackbar = Snackbar.make(layout, text, Snackbar.LENGTH_LONG);
+        mSnackbar.setAction(R.string.action_close, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSnackbar.dismiss();
+            }
+        });
+        mSnackbar.show();
+    }
 
 
 }

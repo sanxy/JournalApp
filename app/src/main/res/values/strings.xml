@@ -69,5 +69,19 @@
     <string name="reset_password">Reset Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
+    <string name="action_close">Dismiss</string>
+    <string name="enter_registered_email">Enter your registered email id</string>
+    <string name="instructions_sent_to_email">We have sent you instructions to reset your password!</string>
+    <string name="failed_to_send_reset_email">Failed to send reset email!</string>
+    <string name="failed_to_update_email">Failed to update email!</string>
+    <string name="email_updated">Email address is updated. Please sign in with new email id!</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="failed_to_updated_password">Failed to update password!</string>
+    <string name="password_updated">Password is updated, sign in with new password!</string>
+    <string name="password_is_too_short">Password too short, enter minimum 6 characters</string>
+    <string name="reset_password_sent">Reset password email is sent!</string>
+    <string name="failed_to_delete_account">Failed to delete your account!</string>
+    <string name="profile_deleted">Your profile is deleted:( Create a account now!</string>
 
 </resources>
