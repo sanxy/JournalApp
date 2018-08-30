@@ -60,9 +60,11 @@
     <string name="are_you_sure">Are you sure ?</string>
     <string name="no">NO</string>
     <string name="yes">YES</string>
-    <string name="cancel">CANCEL</string>
-    <string name="edit">EDIT</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
     <string name="journal_shared_pref">journal_shared_preference</string>
     <string name="is_first_time">isFirstTime</string>
+    <string name="loading">Loading…</string>
+    <string name="settings">Settings</string>
 
 </resources>

@@ -75,6 +75,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent" />
 
+
             <Button
                 android:id="@+id/reset_password_button"
                 android:layout_width="fill_parent"

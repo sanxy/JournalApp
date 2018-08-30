@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
@@ -644,5 +643,6 @@ public class MainActivity extends AppCompatActivity {
     //sign out method
     public void signOut() {
         auth.signOut();
+
     }
 }
