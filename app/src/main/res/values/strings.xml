@@ -66,5 +66,7 @@
     <string name="is_first_time">isFirstTime</string>
     <string name="loading">Loading…</string>
     <string name="settings">Settings</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>

@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity implements View.OnClickListener{
     EditText inputEmail;
-    Button buttonReset, buttonBack;
+    Button buttonReset;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
 
@@ -28,11 +28,9 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 
         inputEmail = findViewById(R.id.email);
         buttonReset = findViewById(R.id.reset_password_button);
-        buttonBack = findViewById(R.id.back_button);
         progressBar = findViewById(R.id.progressBar);
 
         findViewById(R.id.reset_password_button).setOnClickListener(this);
-        findViewById(R.id.back_button).setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
     }
@@ -44,17 +42,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                 resetPassword();
                 break;
 
-            case R.id.back_button:
-                login();
-                break;
-
         }
-    }
-
-    private void login() {
-        Intent login = new Intent(ResetPasswordActivity.this, LoginActivity.class);
-        startActivity(login);
-        finish();
     }
 
     private void resetPassword() {

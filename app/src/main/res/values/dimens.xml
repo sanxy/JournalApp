@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+            <!--Text size-->
+    <dimen name="app_name_size">42sp</dimen>
+    <dimen name="reset_big_text">20sp</dimen>
+    <dimen name="reset_medium_text">14sp</dimen>
+    <dimen name="normal_text">15sp</dimen>
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_padding">16dp</dimen>
     <dimen name="drawable_padding">5dp</dimen>
-    <dimen name="app_name_size">42sp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="general_padding">15dp</dimen>
+    <dimen name="small_padding">7dp</dimen>
+    <dimen name="margin_top">20dip</dimen>
+    <dimen name="reset_margin_top">30dp</dimen>
+    <dimen name="reset_padding">10dp</dimen>
+    <dimen name="reset_medium_padding">20dp</dimen>
+    <dimen name="medium_padding">18dp</dimen>
+    <dimen name="layout_big_padding">42dp</dimen>
+
+    <dimen name="one_padding">1dp</dimen>
+    <dimen name="two_padding">2dp</dimen>
+    <dimen name="zero_padding">0dp</dimen>
+    <dimen name="eight_padding">8dp</dimen>
+    <dimen name="four_padding">4dp</dimen>
+    <dimen name="card_view_height">160dp</dimen>
+    <dimen name="layout_width_big">174dp</dimen>
+    <dimen name="layout_width_small">49dp</dimen>
+    <dimen name="layout_width_smaller">45dp</dimen>
+
+    <dimen name="journal_detail_big_width">131dp</dimen>
+    <dimen name="journal_category_spinner">368dp</dimen>
+
+
 </resources>

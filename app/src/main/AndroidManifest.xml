@@ -21,13 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpActivity"
+            android:label="@string/sign_up"/>
 
         <activity android:name=".ProfileActivity"
             android:label="@string/settings"
             android:parentActivityName=".MainActivity"/>
 
-        <activity android:name=".ResetPasswordActivity">
+        <activity android:name=".ResetPasswordActivity"
+            android:label="@string/reset_password"
+            android:parentActivityName=".LoginActivity">
 
         </activity>
         <activity android:name=".MainActivity"

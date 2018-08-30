@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:padding="@dimen/default_padding">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
@@ -106,7 +106,7 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,11 +115,11 @@
             android:textAllCaps="false"
             android:textColor="@color/colorText" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/text_view_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:padding="@dimen/general_padding"
             android:text="@string/text_view_login"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"

@@ -11,7 +11,7 @@
     android:background="@color/dayCardBg">
 
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/journal_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,20 +19,20 @@
         android:inputType="textPersonName"
         android:hint="@string/journal_name"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/zero_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline" />
 
     <Spinner
         android:id="@+id/journal_category_spinner"
-        android:layout_width="368dp"
+        android:layout_width="@dimen/journal_category_spinner"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="@dimen/medium_padding"
         app:layout_constraintTop_toBottomOf="@+id/journal_name_edit_text"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="@dimen/zero_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline" />
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/journal_date_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,74 +40,74 @@
         android:inputType="date"
         android:hint="@string/day_month_year"
         android:focusable="false"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="@dimen/medium_padding"
         app:layout_constraintTop_toBottomOf="@+id/journal_category_spinner"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="@dimen/zero_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline" />
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/journal_time_edit_text"
-        android:layout_width="131dp"
-        android:layout_height="46dp"
+        android:layout_width="@dimen/journal_detail_big_width"
+        android:layout_height="@dimen/layout_width_smaller"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/hour_minute"
         android:focusable="false"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="@dimen/medium_padding"
         app:layout_constraintTop_toBottomOf="@+id/journal_date_edit_text"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="@dimen/zero_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline" />
 
     <Switch
         android:id="@+id/journal_alarm_switch"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/zero_padding"
         android:text="@string/alarm2"
-        android:textSize="15sp"
+        android:textSize="@dimen/normal_text"
         android:gravity="center"
         android:textAlignment="gravity"
         app:layout_constraintTop_toTopOf="@+id/journal_time_edit_text"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/eight_padding"
         app:layout_constraintBottom_toBottomOf="@+id/journal_time_edit_text"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/eight_padding"
         app:layout_constraintLeft_toRightOf="@+id/journal_time_edit_text"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="@dimen/eight_padding"
+        android:layout_marginRight="@dimen/eight_padding"
         android:theme="@style/AppTheme.SwitchTheme"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/journal_desc_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/description"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="@dimen/medium_padding"
         app:layout_constraintTop_toBottomOf="@+id/journal_time_edit_text"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="@dimen/zero_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline" />
 
-    <RatingBar
+    <android.support.v7.widget.AppCompatRatingBar
         android:id="@+id/journal_priority_rating_bar"
         style="@android:style/Widget.DeviceDefault.Light.RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="@dimen/zero_padding"
+        android:layout_marginTop="@dimen/medium_padding"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/journal_desc_edit_text"
         android:stepSize="1"
         android:theme="@style/AppTheme.RatingBarTheme"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/journal_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/eight_padding"
+        android:layout_marginLeft="@dimen/eight_padding"
+        android:layout_marginRight="@dimen/eight_padding"
+        android:layout_marginTop="@dimen/eight_padding"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.419"

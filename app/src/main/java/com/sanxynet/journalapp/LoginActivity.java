@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (mAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
 
     }
